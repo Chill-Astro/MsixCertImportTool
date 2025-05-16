@@ -15,7 +15,7 @@ MsixCertImportTool is a Simple Command-Line App designed to import .cer files to
 
 ## Installing MsixCertTool from Winget :
 
-    winget install MsixCertTool
+    winget install MsixCertImportTool
 
 ---
     
