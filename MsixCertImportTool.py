@@ -7,7 +7,7 @@ import platform
 
 # --- Constants ---
 UPDATE_VERSION_URL = "https://gist.githubusercontent.com/Chill-Astro/7e0d5246d48b0684ac303df756586c38/raw/MCIT_V.txt"
-CURRENT_VERSION = "1.0" # First Release
+CURRENT_VERSION = "1.1" # Installer Bug Fix
 
 # --- UAC Check and Re-launch Functions ---
 def is_admin():
@@ -91,7 +91,7 @@ def import_cert_logic(certificate_path, store_location, store_name):
 
     except FileNotFoundError:
         print(f"\n--- CERTIFICATE IMPORT FAILED ---")
-        print("Error: powershell.exe not found. Make sure PowerShell is installed and in your system's PATH in the VM.")
+        print("Error : powershell.exe not found. Make sure PowerShell is installed and in your System's PATH.")
         print(f"-------------------------------")
         # Do not exit immediately on failure, allow user to see message
     except Exception as e:
@@ -121,7 +121,7 @@ def check_for_updates():
             print("🎉 MsixCertTool is Up to Date!\n")
         else:
             # This case handles if the online version is lower, suggesting a dev build or issue
-            print("⚠️ This is a DEV. Build or version mismatch of MsixCertTool!\n")
+            print("⚠️ This is a DEV. Build of MsixCertTool!\n")
 
     except requests.exceptions.RequestException as e:
         print("--- UPDATE CHECK FAILED ---")
@@ -161,8 +161,7 @@ if __name__ == "__main__":
     # Define the target store for importing MSIX package signing certificates
     target_store_location = "LocalMachine"
     target_store_name = "Root" # Trusted Root Certification Authorities
-    print(f"The Certificate will be imported to the Local Machine's {target_store_name} store.")
-    print("-" * 30) # Separator for clarity
+    print(f"The Certificate will be imported to the Local Machine's Trusted Root Certification Authourity Store.\n")    
 
    # --- Loop for getting valid certificate path ---
     cert_file_path = None
@@ -178,21 +177,19 @@ if __name__ == "__main__":
         while True:
             # Prompt the user for the certificate path
             cert_file_path_input = input("Enter Full Path of the .cer Certificate File : ") # Clarified prompt
-
+            cert_file_path_input = cert_file_path_input.strip().strip('"') # Remove leading/trailing spaces and quotes
             # Validate the certificate file path
             if not os.path.exists(cert_file_path_input):
                 print(f"\n--- INPUT ERROR ---")
-                print(f"Error: File not found at '{cert_file_path_input}'. Please check the path and try again.")
-                print(f"-----------------")
+                print(f"Error: File not found at '{cert_file_path_input}'. Please check the path and try again.\n")                
             elif not os.path.isfile(cert_file_path_input):
                  print(f"\n--- INPUT ERROR ---")
-                 print(f"Error: The path '{cert_file_path_input}' is not a valid file. Please enter a file path.")
-                 print(f"-----------------")
+                 print(f"Error: The path '{cert_file_path_input}' is not a valid file. Please enter a file path.\n")                 
             # Added check for .cer extension
             elif not cert_file_path_input.lower().endswith('.cer'):
                  print(f"\n--- INPUT ERROR ---")
-                 print(f"Error: The file '{cert_file_path_input}' does not appear to be a .cer file. Please provide the path to your .cer file.")
-                 print(f"-----------------")
+                 print(f"Error: The file '{cert_file_path_input}' does not appear to be a .cer file. Please provide the path to your .cer file.\n")
+                 
             else:
                 # Valid path found, store it and break the loop
                 cert_file_path = cert_file_path_input
