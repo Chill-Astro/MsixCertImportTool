@@ -4,6 +4,10 @@
 <h1 align="center">MsixCertImportTool v1.1</h1>
 MsixCertImportTool is a Simple Command-Line App designed to import .cer files to the Trusted Root Certification Authourities Store in Windows in a few keystrokes! This speeds up the process of certificate importing for Self-Signed Msix Packages on Windows and it is very helpful to non tech-savvy users. 
 
+### WARNING! ⚠️ :
+
+This is the original version of MsixCertImportTool! Don't trust Counterfeit Versions! Importing random certificates is dangerous! Please proceed with care! Also I am no contributor! 
+
 ## Key Features :
 
 - Extemely Lightweight [It's a Terminal-based App]. ✅
