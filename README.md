@@ -38,3 +38,9 @@ This is the original version of MsixCertImportTool! Don't trust Counterfeit Vers
 
 ---
 
+## Note from Developer :
+
+Appreciate my effort? Why not leave a Star ⭐ ! Also if forked, please credit me for my effort and thanks if you do! :)
+
+---
+
